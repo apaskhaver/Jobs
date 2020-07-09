@@ -22,7 +22,7 @@ class JobsSpider(scrapy.Spider):
             if (str(job.xpath('./a/text()').extract_first()) != "\n"):
                 yield {
                     'title': job.xpath('./a/text()').extract_first(),
-                    'link': job.xpath('./a/@href').extract_first()
+                    'link': "https://www.indeed.com" + job.xpath('./a/@href').extract_first()
                 }
 
         next_page_url = response.xpath("//ul[@class='pagination-list']/li[last()]/a/@href").extract_first()
